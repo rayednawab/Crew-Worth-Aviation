@@ -31,7 +31,7 @@ export default function RootLayout({
             </div>
 
             {/* Main Header */}
-            <header className="w-full bg-white border-b-4 border-[#30729f] shadow-sm sticky top-0 z-50">
+            <header className="w-full bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm sticky top-0 z-50 transition-all duration-300">
               <div className="container mx-auto flex flex-col md:flex-row md:h-24 items-center px-4 py-4 md:py-0 max-w-7xl justify-between gap-4 md:gap-0">
                 <a href="/" className="flex items-center gap-4">
                   <Image src="/images/crewlogo.jpeg" alt="Crew Worth Aviation Logo" width={50} height={50} className="object-contain mix-blend-multiply md:w-[60px] md:h-[60px]" />
@@ -41,9 +41,12 @@ export default function RootLayout({
                   </div>
                 </a>
                 
-                <nav className="flex items-center gap-4 md:gap-8 text-[13px] md:text-[15px] font-bold text-[#32373c] uppercase tracking-wide w-full md:w-auto justify-center md:justify-end">
-                  <a href="/parts" className="hover:text-[#30729f] transition-colors py-2">Products & Parts</a>
-                  <a href="/contact" className="bg-[#30729f] text-white px-4 md:px-6 py-2 md:py-2.5 hover:bg-[#255a7e] transition-colors">Contact Us</a>
+                <nav className="flex items-center gap-6 md:gap-8 text-[13px] md:text-[14px] font-bold text-slate-700 uppercase tracking-widest w-full md:w-auto justify-center md:justify-end">
+                  <a href="/parts" className="hover:text-blue-600 transition-colors py-2 relative group">
+                    Products & Parts
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                  <a href="/contact" className="bg-blue-600 text-white px-6 md:px-8 py-2.5 md:py-3 hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 rounded-sm">Contact Us</a>
                 </nav>
               </div>
             </header>

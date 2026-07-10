@@ -5,27 +5,35 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col">
       {/* Hero Section */}
-      <section className="relative w-full h-[600px] flex items-center bg-[#32373c]">
-        {/* We would use an actual aviation hero image here, using placeholder styling to simulate the dark overlay */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[#0f2b4c]/80 mix-blend-multiply z-10"></div>
-          {/* Fallback pattern to simulate an aircraft hanger or engine close up */}
-          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+      <section className="relative w-full h-[700px] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-[#0f2b4c]">
+          <div 
+            className="absolute inset-0 opacity-50 mix-blend-screen"
+            style={{ 
+              backgroundImage: 'url("https://images.unsplash.com/photo-1542304899-7f375c3db731?q=80&w=2000&auto=format&fit=crop")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0f2b4c] via-[#0f2b4c]/80 to-transparent z-10"></div>
         </div>
         
         <div className="container mx-auto max-w-7xl px-4 relative z-20">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl font-oswald font-bold text-white uppercase tracking-tight leading-[1.1] mb-6 shadow-sm">
-              Powering <span className="text-[#30729f]">Flight</span> with Precision Parts
+          <div className="max-w-2xl transform transition-all duration-1000 translate-y-0 opacity-100">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-blue-200 font-hanken text-sm font-semibold tracking-widest uppercase mb-6">
+              Premium Aerospace Components
+            </div>
+            <h1 className="text-5xl md:text-7xl font-oswald font-bold text-white uppercase tracking-tight leading-[1.05] mb-6 drop-shadow-lg">
+              Powering <span className="text-blue-400">Flight</span> with Precision
             </h1>
-            <p className="text-xl text-slate-200 font-hanken mb-8 max-w-xl">
+            <p className="text-xl md:text-2xl text-slate-200 font-hanken mb-10 max-w-xl font-light leading-relaxed">
               Crew Worth Aviation designs and supplies advanced piston aircraft engine spare parts for superior performance and reliability worldwide.
             </p>
-            <div className="flex flex-col md:flex-row gap-4">
-              <a href="/parts" className="bg-[#30729f] text-white px-6 md:px-8 py-4 uppercase font-bold tracking-wider hover:bg-[#255a7e] transition-colors border-2 border-[#30729f] flex items-center justify-center gap-2 text-sm md:text-base">
+            <div className="flex flex-col md:flex-row gap-6">
+              <a href="/parts" className="bg-blue-500 text-white px-8 md:px-10 py-4 md:py-5 uppercase font-bold tracking-wider hover:bg-blue-400 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all duration-300 border border-blue-400 flex items-center justify-center gap-3 text-sm md:text-base rounded-sm">
                 View Parts Catalog <ArrowRight className="h-5 w-5" />
               </a>
-              <a href="/contact" className="bg-transparent text-white px-6 md:px-8 py-4 uppercase font-bold tracking-wider hover:bg-white hover:text-[#32373c] transition-colors border-2 border-white flex items-center justify-center gap-2 text-sm md:text-base">
+              <a href="/contact" className="bg-white/5 backdrop-blur-sm text-white px-8 md:px-10 py-4 md:py-5 uppercase font-bold tracking-wider hover:bg-white hover:text-[#0f2b4c] hover:scale-105 transition-all duration-300 border border-white/30 flex items-center justify-center gap-3 text-sm md:text-base rounded-sm">
                 Contact Us
               </a>
             </div>
@@ -42,7 +50,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-10 border border-slate-200 hover:shadow-xl hover:border-[#30729f] transition-all group">
+            <div className="bg-white p-10 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:border-blue-400 transition-all duration-500 group rounded-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-100 transition-colors"></div>
               <div className="h-16 w-16 bg-[#30729f] text-white flex items-center justify-center rounded-none mb-6 group-hover:scale-110 transition-transform">
                 <Settings className="h-8 w-8" />
               </div>
@@ -55,7 +64,8 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="bg-white p-10 border border-slate-200 hover:shadow-xl hover:border-[#30729f] transition-all group">
+            <div className="bg-white p-10 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:border-blue-400 transition-all duration-500 group rounded-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-100 transition-colors"></div>
               <div className="h-16 w-16 bg-[#30729f] text-white flex items-center justify-center rounded-none mb-6 group-hover:scale-110 transition-transform">
                 <Wrench className="h-8 w-8" />
               </div>
@@ -68,7 +78,8 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="bg-white p-10 border border-slate-200 hover:shadow-xl hover:border-[#30729f] transition-all group">
+            <div className="bg-white p-10 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:border-blue-400 transition-all duration-500 group rounded-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-100 transition-colors"></div>
               <div className="h-16 w-16 bg-[#30729f] text-white flex items-center justify-center rounded-none mb-6 group-hover:scale-110 transition-transform">
                 <ShieldCheck className="h-8 w-8" />
               </div>
@@ -85,8 +96,18 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#30729f] text-white border-y-[12px] border-[#32373c]">
-        <div className="container mx-auto max-w-5xl px-4 text-center">
+      <section className="relative py-24 border-y border-white/10 overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-[#0f2b4c]">
+          <div 
+            className="absolute inset-0 opacity-20 mix-blend-screen"
+            style={{ 
+              backgroundImage: 'url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000&auto=format&fit=crop")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          ></div>
+        </div>
+        <div className="container mx-auto max-w-5xl px-4 text-center relative z-10">
           <Plane className="h-16 w-16 mx-auto mb-8 text-white/80" />
           <h2 className="text-4xl font-oswald font-bold uppercase tracking-tight mb-6">Trusted by MROs Worldwide</h2>
           <p className="text-xl text-blue-100 font-hanken mb-10 max-w-3xl mx-auto">

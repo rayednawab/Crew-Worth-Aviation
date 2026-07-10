@@ -76,7 +76,11 @@ export function PartsClient() {
         const status = row.original.availability
         const isAvailable = status === "IN_STOCK"
         return (
-          <Badge variant={isAvailable ? "default" : "destructive"} className={isAvailable ? "bg-green-600 hover:bg-green-700" : ""}>
+          <Badge variant={isAvailable ? "default" : "destructive"} 
+                 className={isAvailable 
+                   ? "bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20 border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.2)]" 
+                   : "bg-red-500/10 text-red-600 hover:bg-red-500/20 border border-red-500/20 shadow-[0_0_10px_rgba(239,68,68,0.2)]"}>
+            <span className={`w-1.5 h-1.5 rounded-full mr-2 ${isAvailable ? "bg-emerald-500" : "bg-red-500"}`}></span>
             {status.replace("_", " ")}
           </Badge>
         )
@@ -133,10 +137,10 @@ export function PartsClient() {
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
-                    className="hover:bg-slate-50/50 cursor-pointer transition-colors"
+                    className="hover:bg-blue-50/50 even:bg-slate-50/50 cursor-pointer transition-colors border-b border-slate-100"
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id} className="py-4">
+                      <TableCell key={cell.id} className="py-5">
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </TableCell>
                     ))}
