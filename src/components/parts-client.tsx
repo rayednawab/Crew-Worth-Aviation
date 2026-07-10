@@ -60,8 +60,8 @@ export function PartsClient() {
         if (engines.length === 0) return <span className="text-slate-400">General</span>
         return (
           <div className="flex flex-wrap gap-1">
-            {engines.map((e: any) => (
-              <Badge key={e.id} variant="secondary" className="text-xs bg-slate-100 text-slate-700 hover:bg-slate-200">
+            {engines.map((e: any, index: number) => (
+              <Badge key={e.slug || e.name || index} variant="secondary" className="text-xs bg-slate-100 text-slate-700 hover:bg-slate-200">
                 {e.name}
               </Badge>
             ))}
