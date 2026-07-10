@@ -53,32 +53,45 @@ export default function RootLayout({
             </main>
 
             {/* Footer */}
-            <footer className="bg-[#32373c] text-white py-12 mt-auto border-t-8 border-[#30729f]">
-              <div className="container mx-auto max-w-7xl px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                  <h3 className="font-oswald text-xl uppercase tracking-wider mb-4">Crew Worth Aviation</h3>
-                  <p className="text-sm text-slate-300">Global leaders in aircraft engine components, spare parts, and overhaul kits.</p>
+            <footer className="bg-[#32373c] text-white pt-16 pb-8 mt-auto border-t-8 border-[#30729f]">
+              <div className="container mx-auto max-w-7xl px-4">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                  <div className="col-span-1 md:col-span-1">
+                    <h3 className="font-oswald text-2xl uppercase tracking-widest mb-6 font-bold">Crew Worth <span className="text-[#30729f]">Aviation</span></h3>
+                    <p className="text-sm text-slate-300 font-hanken leading-relaxed">
+                      Global leaders in aircraft engine components, spare parts, and overhaul kits. Powering flight with precision.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-oswald text-lg uppercase tracking-wider mb-6 text-white border-b-2 border-[#30729f] pb-2 inline-block">Products</h4>
+                    <ul className="space-y-3 text-sm text-slate-300 font-hanken">
+                      <li><a href="/parts" className="hover:text-white transition-colors flex items-center gap-2"><span className="text-[#30729f]">▸</span> Spare Parts</a></li>
+                      <li><a href="/parts" className="hover:text-white transition-colors flex items-center gap-2"><span className="text-[#30729f]">▸</span> Cylinder Kits</a></li>
+                      <li><a href="/parts" className="hover:text-white transition-colors flex items-center gap-2"><span className="text-[#30729f]">▸</span> Engine Overhaul</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-oswald text-lg uppercase tracking-wider mb-6 text-white border-b-2 border-[#30729f] pb-2 inline-block">Support</h4>
+                    <ul className="space-y-3 text-sm text-slate-300 font-hanken">
+                      <li><a href="/contact" className="hover:text-white transition-colors flex items-center gap-2"><span className="text-[#30729f]">▸</span> Contact Us</a></li>
+                      <li><a href="/contact" className="hover:text-white transition-colors flex items-center gap-2"><span className="text-[#30729f]">▸</span> Tech Support</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-oswald text-lg uppercase tracking-wider mb-6 text-white border-b-2 border-[#30729f] pb-2 inline-block">Connect</h4>
+                    <p className="text-sm text-slate-300 mb-4 font-hanken">Subscribe to our technical bulletins and updates.</p>
+                    <div className="flex shadow-sm">
+                      <input type="email" placeholder="Email Address" className="px-4 py-3 text-slate-900 w-full bg-white outline-none focus:ring-2 focus:ring-[#30729f] font-hanken" />
+                      <button className="bg-[#30729f] px-6 py-3 uppercase font-bold text-sm tracking-wider hover:bg-[#255a7e] transition-colors">Join</button>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-oswald text-lg uppercase tracking-wider mb-4 text-[#30729f]">Products</h4>
-                  <ul className="space-y-2 text-sm text-slate-300">
-                    <li><a href="/parts" className="hover:text-white">Spare Parts</a></li>
-                    <li><a href="/parts" className="hover:text-white">Cylinder Kits</a></li>
-                    <li><a href="/parts" className="hover:text-white">Engine Overhaul</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-oswald text-lg uppercase tracking-wider mb-4 text-[#30729f]">Support</h4>
-                  <ul className="space-y-2 text-sm text-slate-300">
-                    <li><a href="/contact" className="hover:text-white">Contact Us</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-oswald text-lg uppercase tracking-wider mb-4 text-[#30729f]">Connect</h4>
-                  <p className="text-sm text-slate-300 mb-2">Subscribe to our technical bulletins.</p>
-                  <div className="flex">
-                    <input type="email" placeholder="Email Address" className="px-3 py-2 text-slate-900 w-full rounded-l-none" />
-                    <button className="bg-[#30729f] px-4 py-2 uppercase font-bold text-xs">Join</button>
+                
+                <div className="border-t border-slate-600 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 font-hanken">
+                  <p>&copy; {new Date().getFullYear()} Crew Worth Aviation. All rights reserved.</p>
+                  <div className="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
                   </div>
                 </div>
               </div>
