@@ -1,0 +1,89 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String?
+  company       String?
+  email         String         @unique
+  phone         String?
+  country       String?
+  password      String         // Hashed
+  role          String         @default("CUSTOMER") // SUPER_ADMIN, ADMIN, SALES, INVENTORY_MANAGER, CUSTOMER
+  quoteRequests QuoteRequest[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model EngineModel {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  parts       Part[]   // Many-to-many relationship
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Part {
+  id           String          @id @default(cuid())
+  partNumber   String          @unique
+  description  String
+  quantity     Int             @default(0)
+  unit         String?         @default("EA")
+  manufacturer String?
+  partCategory String?
+  availability String          @default("IN_STOCK") // IN_STOCK, LOW_STOCK, OUT_OF_STOCK, RESERVED, ORDERED
+  condition    String?         // e.g., Factory New, Overhauled, Serviceable
+  remarks      String?
+  priceInr     Decimal?        // INR Pricing
+  pdfReference String?
+  engines      EngineModel[]   // Many-to-many relationship
+  quotes       QuoteItem[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+}
+
+model QuoteRequest {
+  id            String      @id @default(cuid())
+  userId        String?     // Optional, for registered customers
+  user          User?       @relation(fields: [userId], references: [id])
+  name          String      // Captured if user is not registered
+  company       String?
+  email         String
+  phone         String?
+  country       String?
+  aircraftModel String?
+  urgency       String?     // e.g., AOG, Routine, Critical
+  message       String?
+  status        String      @default("NEW") // NEW, REVIEWING, PRICING, SENT, APPROVED, REJECTED, COMPLETED
+  items         QuoteItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model QuoteItem {
+  id             String       @id @default(cuid())
+  quoteRequestId String
+  quoteRequest   QuoteRequest @relation(fields: [quoteRequestId], references: [id])
+  partId         String?      
+  part           Part?        @relation(fields: [partId], references: [id])
+  partNumber     String       // Captured text in case part is not in DB yet
+  quantity       Int
+}
+
+model Document {
+  id          String   @id @default(cuid())
+  title       String
+  category    String   // Maintenance Manual, Service Bulletin, Parts Catalog
+  fileUrl     String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
