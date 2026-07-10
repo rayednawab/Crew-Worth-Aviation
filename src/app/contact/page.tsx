@@ -1,8 +1,37 @@
 "use client"
 
 import { Phone, Mail, MapPin } from "lucide-react"
+import { useState } from "react"
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed to send message");
+      
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 py-16">
       <div className="container mx-auto max-w-5xl px-4">
@@ -58,26 +87,76 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Simple Contact Form */}
+          {/* Contact Form */}
           <div>
             <h2 className="text-2xl font-oswald font-bold text-[#32373c] uppercase border-b-2 border-[#30729f] pb-4 inline-block mb-8">Send a Message</h2>
-            <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('Message sent successfully to Crew Worth Aviation!') }}>
-              <div>
-                <label className="block text-sm font-bold uppercase text-[#32373c] mb-2 font-oswald tracking-wide">Full Name</label>
-                <input required type="text" className="w-full px-4 py-3 border border-slate-300 focus:border-[#30729f] focus:outline-none bg-slate-50 transition-colors" placeholder="John Doe" />
+            
+            {status === "success" ? (
+              <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded-sm text-center">
+                <h3 className="text-xl font-oswald font-bold uppercase mb-2">Message Sent!</h3>
+                <p className="font-hanken text-sm">Thank you for contacting Crew Worth Aviation. A member of our team will respond to your inquiry shortly.</p>
+                <button 
+                  onClick={() => setStatus("idle")} 
+                  className="mt-6 text-[#30729f] font-bold uppercase text-sm hover:underline"
+                >
+                  Send another message
+                </button>
               </div>
-              <div>
-                <label className="block text-sm font-bold uppercase text-[#32373c] mb-2 font-oswald tracking-wide">Email Address</label>
-                <input required type="email" className="w-full px-4 py-3 border border-slate-300 focus:border-[#30729f] focus:outline-none bg-slate-50 transition-colors" placeholder="john@airline.com" />
-              </div>
-              <div>
-                <label className="block text-sm font-bold uppercase text-[#32373c] mb-2 font-oswald tracking-wide">Message / Parts Request</label>
-                <textarea required rows={5} className="w-full px-4 py-3 border border-slate-300 focus:border-[#30729f] focus:outline-none bg-slate-50 transition-colors resize-none" placeholder="How can we assist you?"></textarea>
-              </div>
-              <button type="submit" className="w-full bg-[#30729f] text-white py-4 uppercase font-bold font-oswald tracking-wider hover:bg-[#32373c] transition-colors border-2 border-transparent">
-                Submit Inquiry
-              </button>
-            </form>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                {status === "error" && (
+                  <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-sm text-sm font-hanken">
+                    There was an error sending your message. Please try again or contact us directly via email.
+                  </div>
+                )}
+                <div>
+                  <label className="block text-sm font-bold uppercase text-[#32373c] mb-2 font-oswald tracking-wide">Full Name</label>
+                  <input 
+                    required 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    disabled={status === "loading"}
+                    className="w-full px-4 py-3 border border-slate-300 focus:border-[#30729f] focus:outline-none bg-slate-50 transition-colors disabled:opacity-50" 
+                    placeholder="John Doe" 
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold uppercase text-[#32373c] mb-2 font-oswald tracking-wide">Email Address</label>
+                  <input 
+                    required 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={status === "loading"}
+                    className="w-full px-4 py-3 border border-slate-300 focus:border-[#30729f] focus:outline-none bg-slate-50 transition-colors disabled:opacity-50" 
+                    placeholder="john@airline.com" 
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold uppercase text-[#32373c] mb-2 font-oswald tracking-wide">Message / Parts Request</label>
+                  <textarea 
+                    required 
+                    rows={5} 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    disabled={status === "loading"}
+                    className="w-full px-4 py-3 border border-slate-300 focus:border-[#30729f] focus:outline-none bg-slate-50 transition-colors resize-none disabled:opacity-50" 
+                    placeholder="How can we assist you?"
+                  ></textarea>
+                </div>
+                <button 
+                  type="submit" 
+                  disabled={status === "loading"}
+                  className="w-full bg-[#30729f] text-white py-4 uppercase font-bold font-oswald tracking-wider hover:bg-[#32373c] transition-colors border-2 border-transparent disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {status === "loading" ? "Sending..." : "Submit Inquiry"}
+                </button>
+              </form>
+            )}
           </div>
 
         </div>
