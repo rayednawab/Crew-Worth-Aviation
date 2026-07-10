@@ -21,11 +21,11 @@ export default function Home() {
             <p className="text-xl text-slate-200 font-hanken mb-8 max-w-xl">
               Crew Worth Aviation designs and supplies advanced piston aircraft engine spare parts for superior performance and reliability worldwide.
             </p>
-            <div className="flex gap-4">
-              <a href="/parts" className="bg-[#30729f] text-white px-8 py-4 uppercase font-bold tracking-wider hover:bg-[#255a7e] transition-colors border-2 border-[#30729f] flex items-center gap-2">
+            <div className="flex flex-col md:flex-row gap-4">
+              <a href="/parts" className="bg-[#30729f] text-white px-6 md:px-8 py-4 uppercase font-bold tracking-wider hover:bg-[#255a7e] transition-colors border-2 border-[#30729f] flex items-center justify-center gap-2 text-sm md:text-base">
                 View Parts Catalog <ArrowRight className="h-5 w-5" />
               </a>
-              <a href="/contact" className="bg-transparent text-white px-8 py-4 uppercase font-bold tracking-wider hover:bg-white hover:text-[#32373c] transition-colors border-2 border-white flex items-center gap-2">
+              <a href="/contact" className="bg-transparent text-white px-6 md:px-8 py-4 uppercase font-bold tracking-wider hover:bg-white hover:text-[#32373c] transition-colors border-2 border-white flex items-center justify-center gap-2 text-sm md:text-base">
                 Contact Us
               </a>
             </div>
