@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       if (process.env.RESEND_API_KEY) {
         await resend.emails.send({
           from: 'Crew Worth Aviation <onboarding@resend.dev>', // Use resend test domain or your verified domain
-          to: process.env.DESTINATION_EMAIL || 'sales@crewworthaviation.com',
+          to: process.env.DESTINATION_EMAIL || 'info@crewworthaviation.com',
           subject: `New Inquiry from ${name}`,
           text: `
             New contact form submission:

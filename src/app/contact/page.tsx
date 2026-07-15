@@ -55,10 +55,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-oswald font-bold uppercase text-[#32373c]">Customer Service</h3>
-                <a href="tel:800.326.0089" className="text-[#30729f] font-hanken hover:underline block mt-1">800.326.0089</a>
-                
-                <h3 className="font-oswald font-bold uppercase text-[#32373c] mt-4">Tech Support</h3>
-                <a href="tel:251.438.3411" className="text-[#30729f] font-hanken hover:underline block mt-1">251.438.3411</a>
+                <a href="tel:+919004655405" className="text-[#30729f] font-hanken hover:underline block mt-1">+91 90046 55405</a>
               </div>
             </div>
 
@@ -67,8 +64,8 @@ export default function ContactPage() {
                 <Mail className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="font-oswald font-bold uppercase text-[#32373c]">Email Sales</h3>
-                <a href="mailto:sales@crewworthaviation.com" className="text-[#30729f] font-hanken hover:underline block mt-1">sales@crewworthaviation.com</a>
+                <h3 className="font-oswald font-bold uppercase text-[#32373c]">Email Us</h3>
+                <a href="mailto:info@crewworthaviation.com" className="text-[#30729f] font-hanken hover:underline block mt-1">info@crewworthaviation.com</a>
               </div>
             </div>
 

@@ -24,9 +24,11 @@ export default function RootLayout({
           <div className="min-h-screen flex flex-col">
             {/* Top Bar - Very Continental Aero */}
             <div className="w-full bg-[#32373c] text-white py-1.5 md:py-1">
-              <div className="container mx-auto max-w-7xl px-4 flex flex-col md:flex-row justify-center md:justify-end items-center gap-2 md:gap-6 text-[10px] md:text-xs font-semibold tracking-wider uppercase">
-                <a href="tel:800.326.0089" className="hover:text-blue-300">Customer Service: 800.326.0089</a>
-                <a href="tel:251.438.3411" className="hover:text-blue-300">Tech Support: 251.438.3411</a>
+              <div className="container mx-auto max-w-7xl px-4 flex flex-col md:flex-row justify-center md:justify-end items-center gap-2 md:gap-6">
+                <div className="flex flex-col space-y-2 text-sm text-slate-400">
+                  <a href="tel:+919004655405" className="hover:text-blue-300">Customer Service: +91 90046 55405</a>
+                  <a href="mailto:info@crewworthaviation.com" className="hover:text-blue-300">Email: info@crewworthaviation.com</a>
+                </div>
               </div>
             </div>
 
