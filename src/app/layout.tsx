@@ -10,6 +10,9 @@ const oswald = Oswald({ subsets: ["latin"], variable: '--font-oswald' });
 export const metadata: Metadata = {
   title: "Crew Worth Aviation",
   description: "Enterprise Aviation Spare Parts Management",
+  icons: {
+    icon: '/icon.png?v=2',
+  },
 };
 
 export default function RootLayout({
