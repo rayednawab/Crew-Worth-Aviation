@@ -82,7 +82,6 @@ export default function RootLayout({
                     <h4 className="font-oswald text-lg uppercase tracking-wider mb-6 text-white border-b-2 border-[#30729f] pb-2 inline-block">Support</h4>
                     <ul className="space-y-3 text-sm text-slate-300 font-hanken">
                       <li><a href="/contact" className="hover:text-white transition-colors flex items-center gap-2"><span className="text-[#30729f]">▸</span> Contact Us</a></li>
-                      <li><a href="/contact" className="hover:text-white transition-colors flex items-center gap-2"><span className="text-[#30729f]">▸</span> Tech Support</a></li>
                     </ul>
                   </div>
                   <div>

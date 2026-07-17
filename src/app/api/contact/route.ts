@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server';
 import { google } from 'googleapis';
 import { Resend } from 'resend';
 
-// Initialize Resend with your API Key
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
+    // Initialize Resend inside the request handler to avoid build-time errors
+    const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy');
+    
     const body = await request.json();
     const { name, email, message } = body;
 
